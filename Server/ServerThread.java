@@ -32,6 +32,12 @@ public class ServerThread extends Thread {
 					 out.println(input + "\n");
 				 }
 				 out.flush();
+				 try {
+					//may not need have main connection server handle sleeping threads....
+				 	ServerThread.sleep(100);
+				 } catch(Exception e) {
+					 System.out.println("Error sleeping thread");
+				 }
 			 }
 			 //wait after init non-blocking
 			 try {

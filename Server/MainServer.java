@@ -84,7 +84,11 @@ public class MainServer {
 			currentUsers.add(new ServerThread(listener.accept(), ++clientNumber));
 			while(true) {
 				new ServerThread(listener.accept(), ++clientNumber).start();
-			
+				try {
+					ServerThread.sleep(100);
+				} catch(Exception e) {
+					System.out.println("Error in sleeping Server Thread");
+				}
 			}
 		} finally {
 			listener.close();
